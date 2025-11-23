@@ -309,15 +309,9 @@
 
         function generateQuestion() {
             // Generate 2-digit number (10-99) minus 1-digit number (1-9)
-            // Ensure result is positive
+            // Result is always positive since min is 10-9=1
             num1 = Math.floor(Math.random() * 90) + 10; // 10-99
             num2 = Math.floor(Math.random() * 9) + 1;    // 1-9
-            
-            // Make sure the result is positive
-            while (num1 - num2 < 0) {
-                num1 = Math.floor(Math.random() * 90) + 10;
-                num2 = Math.floor(Math.random() * 9) + 1;
-            }
             
             currentAnswer = num1 - num2;
             
@@ -370,8 +364,9 @@
         function celebrate() {
             const celebration = document.getElementById('celebration');
             const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+            const CONFETTI_COUNT = 50;
             
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < CONFETTI_COUNT; i++) {
                 setTimeout(() => {
                     const confetti = document.createElement('div');
                     confetti.className = 'confetti';
@@ -428,14 +423,11 @@
 
         // Allow Enter key to submit answer
         document.addEventListener('DOMContentLoaded', () => {
-            const answerInput = document.getElementById('answerInput');
-            if (answerInput) {
-                answerInput.addEventListener('keypress', (e) => {
-                    if (e.key === 'Enter') {
-                        submitAnswer();
-                    }
-                });
-            }
+            document.getElementById('answerInput').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    submitAnswer();
+                }
+            });
         });
     </script>
 </body>
