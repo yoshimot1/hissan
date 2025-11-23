@@ -378,7 +378,7 @@
                 num1 = Math.floor(Math.random() * 90) + 10; // 10-99
                 num2 = Math.floor(Math.random() * 9) + 1;    // 1-9
             } else { // hard
-                // Hard: 2-digit (10-99) minus 2-digit (10-99)
+                // Hard: 2-digit (11-99) minus 2-digit (10 to num1-1)
                 // Make sure result is always positive (num2 < num1)
                 // Generate num1 from 11-99 to ensure we can have num2 from 10 to num1-1
                 num1 = Math.floor(Math.random() * 89) + 11; // 11-99
